@@ -50,15 +50,15 @@ function exponentiation() {
         alert("Ошибка в исходных данных!");
         result = '';
         b = '';
-    } else if (i == 0) {
+    } else if (i === 0) {
         b = 1;
-    } else if ((i >= 1) && (i % 1 == 0)) {
+    } else if ((i >= 1) && (i % 1 === 0)) {
         b = 1;
         while (i > 0) {
             i--;
             b *= a;
         }
-    } else if ((i <= -1) && (i % 1 == 0)) {
+    } else if ((i <= -1) && (i % 1 === 0)) {
         b = 1;
         while (i < 0) {
             i++;
@@ -83,7 +83,7 @@ function commonDivisors() {
         if (b < 0) b = b * (-1);
         while ((i < a) || (i < b)) {
             i++;
-            if ((a % i == 0) && (b % i == 0)) result += (`-${i}, ${i}, `);
+            if ((a % i === 0) && (b % i === 0)) result += (`-${i}, ${i}, `);
         }
     }
     showResult(`${result.slice(0, -2)}`);
@@ -92,9 +92,9 @@ function commonDivisors() {
 function factorial() {
     a = +prompt("Введите целое неотрицательное число:");
     result = '';
-    if (isNaN(a) || (a < 0) || (a % 1 != 0)) {
+    if (isNaN(a) || (a < 0) || (a % 1 !== 0)) {
         alert("Ошибка в исходных данных!");
-    } else if (a == 0) result = (`0! = 1`);
+    } else if (a === 0) result = (`0! = 1`);
     else {
         i = 0;
         b = 1;
@@ -109,7 +109,7 @@ function factorial() {
 
 function mathProblem() {
     do a = +prompt("Решите пример (2 + 2 * 2) и введите ответ:");
-    while (a != 6);
+    while (a !== 6);
     showResult("Правильный ответ!");
 }
 
@@ -128,11 +128,11 @@ function multiplesOfNumbers() {
     a = +prompt("Введите число:");
     if (isNaN(a)) {
         alert("Ошибка в исходных данных!");
-    } else if ((a < -100) || (a == 0) || (a > 100)) alert(`На интервале от 1 до 100 нет чисел кратных ${a}`);
+    } else if ((a < -100) || (a === 0) || (a > 100)) alert(`На интервале от 1 до 100 нет чисел кратных ${a}`);
     else {
         result = (`Числа от 1 до 100 кратные ${a}: `);
         for (i = 1; i <= 100; i++) {
-            if (i % a == 0) result += (`${i}, `);
+            if (i % a === 0) result += (`${i}, `);
         }
         showResult(`${result.slice(0, -2)}`);
     }
@@ -141,14 +141,14 @@ function multiplesOfNumbers() {
 function everyFourth() {
     a = +prompt("Введите целое число - минимальное значение диапазона:");
     b = +prompt("Введите целое число - максимальное значение диапазона:");
-    if (isNaN(a) || isNaN(b) || (a % 1 != 0) || (b % 1 != 0) || (a > b)) {
+    if (isNaN(a) || isNaN(b) || (a % 1 !== 0) || (b % 1 !== 0) || (a > b)) {
         alert("Ошибка в исходных данных!");
         result = '';
     } else if ((b - a) < 4) result = "Слишком маленький диапазон  ";
     else {
         result = (`Каждый четвёртый элемент из диапазона [${a};${b}]: `);
         for (i = a; i <= b; i++) {
-            if ((i - a) % 4 == 0) result += (`${i}, `);
+            if ((i - a) % 4 === 0) result += (`${i}, `);
         }
     }
     showResult(`${result.slice(0, -2)}`);
@@ -157,23 +157,18 @@ function everyFourth() {
 function primeNumber() {
     a = +prompt("Введите целое число:");
     b = 0;
-    if (isNaN(a) || (a % 1 != 0)) {
+    if (isNaN(a) || (a % 1 !== 0)) {
         alert("Ошибка в исходных данных!");
         result = '';
     } else {
-        if (a == 0) {
+        if (a === 0) {
             result = "0 не является простым числом";
-        } else if (a < 0) {
-            for (i = -1; i >= a; i--) {
-                if (a % i == 0) b++;
-            }
         } else {
             for (i = 1; i <= a; i++) {
-                if (a % i == 0) b++;
+                if (a % i === 0) b++;
             }
         }
-
-        if ((a == 1) || (a == -1) || (b == 2)) result = (`${a} - простое число`);
+        if (b === 2) result = (`${a} - простое число`);
         else result = (`${a} - не простое число`);
     }
     showResult(`${result}`);
